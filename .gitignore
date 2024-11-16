@@ -1,0 +1,6 @@
+dist/
+.astro/
+.venv
+node_modules/
+package-l*
+env.d*
