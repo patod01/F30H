@@ -1,0 +1,54 @@
+---
+import StatBar from './StatBar.astro';
+import Buttons from './Buttons.astro';
+const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';
+---
+<html>
+<head>
+   <meta charset="utf-8" />
+   <link rel="icon" href="/icon.png" />
+   <meta name="viewport" content="width=device-width" />
+   <script is:inline src="/js/a.js"></script>
+   <title>F30H</title>
+   <script define:vars={{apiLink}}>
+      window.api_link = apiLink;
+   </script>
+</head>
+<body x-data="{ reports: 0, discarded: 0, formatted: 0, help: false }">   
+   <div>
+      <h1>F30-1 Helper</h1>
+      <StatBar/>
+      <br>
+      <Buttons />
+      <div class="help" x-show="help" x-cloak x-transition.duration.150ms>
+         <slot/>
+      </div>
+   </div>
+</body>
+</html>
+
+<style>
+   [x-cloak]{display: none;}
+   body {
+/*      font-family: sans-serif;*/
+      background: lightgrey;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      & > div {
+         max-width: 543px;
+      }
+   }
+   h1 {
+      text-align: center;
+   }
+   .help {
+      code {
+         background: darkgreen;
+         color: white;
+         font-weight: bold;
+         border-radius: 3px;
+         padding: 0px 5px 0px 5px;
+      }
+   }
+</style>

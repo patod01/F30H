@@ -1,17 +1,15 @@
 {
-  "name": "a",
+  "name": "F30H",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "dev": "DEV=true astro dev",
+    "build": "DEV=false astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.0",
-    "@types/alpinejs": "^3.13.10",
     "alpinejs": "^3.14.3",
     "astro": "^4.16.13"
   }

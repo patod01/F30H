@@ -1,0 +1,38 @@
+<div>
+   <button @click="help = !help">Instrucciones</button>
+
+   <button @click="console.log(await ejecuta('abrir-xlsx'))">Abrir XLSX</button>
+
+   <button @click="
+      let response = await ejecuta('cargar-xlsx');
+      console.log(response);
+      reports = response.total_files;
+   ">Cargar reportes</button>
+
+   <button @click="
+      let response = await ejecuta('kensten');
+      console.log(response);
+      discarded = response.discarded.length;
+      formatted = response.formatted;
+   ">Ejecutar Kensten</button>
+</div>
+
+<style>
+   div {
+      display: flex;
+      justify-content: space-evenly;
+   }
+   button {
+/*      margin: 1px;
+      padding: 7px;
+      height: 33px;
+      background: lightgreen;
+      border-radius: 5px;
+      border-width: 1px;
+      box-shadow: 0px 5px 11px -4px gray;
+      &:hover {
+         border-color: red;
+         border-width: 2px;
+      }
+*/   }
+</style>

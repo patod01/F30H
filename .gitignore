@@ -1,6 +1,13 @@
-dist/
-.astro/
+*.xlsx
+_*_
+.astro
+.jampack
 .venv
-node_modules/
-package-l*
+AQUI
+commit.md
+dist
 env.d*
+node_modules
+package-l*
+temp
+ui
