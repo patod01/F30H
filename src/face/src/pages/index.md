@@ -1,9 +1,7 @@
 ---
 layout: ../stix/Body.astro
+title: Instrucciones de uso
 ---
-
-## Instrucciones de uso
-
 - Abrir `a.xlsx` y actualizar la tabla de la hoja `check` con todos
 los proyectos que necesiten reporte.
      - La tabla de la hoja `check` muestra, para cada proyecto, un

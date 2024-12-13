@@ -1,6 +1,9 @@
 ---
+const {title} = Astro.props.frontmatter;
 import StatBar from './StatBar.astro';
 import Buttons from './Buttons.astro';
+import './css/paleta.css';
+import './css/Body.css';
 const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';
 ---
 <html>
@@ -21,34 +24,11 @@ const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';
       <br>
       <Buttons />
       <div class="help" x-show="help" x-cloak x-transition.duration.150ms>
-         <slot/>
+         <h2>{title}</h2>
+         <div class="card">
+            <slot />
+         </div>
       </div>
    </div>
 </body>
 </html>
-
-<style>
-   [x-cloak]{display: none;}
-   body {
-/*      font-family: sans-serif;*/
-      background: lightgrey;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      & > div {
-         max-width: 543px;
-      }
-   }
-   h1 {
-      text-align: center;
-   }
-   .help {
-      code {
-         background: darkgreen;
-         color: white;
-         font-weight: bold;
-         border-radius: 3px;
-         padding: 0px 5px 0px 5px;
-      }
-   }
-</style>

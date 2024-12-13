@@ -1,0 +1,14 @@
+:root {
+     --body-bg: lightgray;
+     --body-txt: black;
+     --card-corner: 7px;
+     --card-background: white;
+     --card-txt: black;
+     --button-border: black;
+     --button-border-on: red;
+     --button-bg: green;
+     --button-bg-on: darkgreen;
+     --button-txt: white;
+     --resaltado-txt: white;
+     --resaltado-bg: darkgreen;
+}

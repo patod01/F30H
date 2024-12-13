@@ -1,0 +1,32 @@
+[x-cloak]{display: none;}
+
+body {
+     color: var(--body-txt);
+     font-family: sans-serif;
+     background: var(--body-bg);
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     & > div {
+          max-width: 543px;
+     }
+}
+
+h1 {
+     text-align: center;
+}
+
+.card {
+     border-radius: var(--card-corner);
+     padding-top: 11px;
+     padding-bottom: 11px;
+     background: var(--card-background);
+}
+
+code {
+     color: var(--resaltado-txt);
+     background: var(--resaltado-bg);
+     font-weight: bold;
+     border-radius: 3px;
+     padding: 0px 5px;
+}
