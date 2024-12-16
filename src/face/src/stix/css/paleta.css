@@ -1,4 +1,4 @@
-:root {
+/*:root {
      --body-bg: lightgray;
      --body-txt: black;
      --card-corner: 7px;
@@ -11,4 +11,25 @@
      --button-txt: white;
      --resaltado-txt: white;
      --resaltado-bg: darkgreen;
+}
+*/
+:root {
+     --body-bg: #dedede;
+     --body-txt: #172516;
+     --card-corner: 7px;
+     --card-background: #f0f4f0;
+     --card-txt: var(--body-txt);
+     --button-border: var(--body-txt);
+     --button-border-on: #f392c0;
+
+/*     --button-bg: #2e492c;*/
+/*     --button-bg-on: #a7b79f;*/
+/*     --button-txt: white;*/
+
+     --button-bg: #a7b79f;
+     --button-bg-on: #2e492c;
+     --button-txt: black;
+
+     --resaltado-txt: var(--body-txt);
+     --resaltado-bg: #c5d6c2;
 }
