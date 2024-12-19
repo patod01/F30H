@@ -1,0 +1,22 @@
+---
+import '../stix/css/paleta.css';
+import '../stix/css/Body.css';
+import '../stix/css/Buttons.css';
+const {title} = Astro.props;
+const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';
+---
+<html>
+<head>
+   <meta charset="utf-8" />
+   <link rel="icon" href="/icon.png" />
+   <meta name="viewport" content="width=device-width" />
+   <title>{title}</title>
+   <script is:inline src="/js/a.js"></script>
+   <script define:vars={{apiLink}}>
+      window.api_link = apiLink;
+   </script>
+</head>
+<body>
+   <slot/>
+</body>
+</html>

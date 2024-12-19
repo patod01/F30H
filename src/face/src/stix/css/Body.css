@@ -18,8 +18,7 @@ h1 {
 
 .card {
      border-radius: var(--card-corner);
-     padding-top: 11px;
-     padding-bottom: 11px;
+     padding: 7px 11px;
      background: var(--card-background);
 }
 

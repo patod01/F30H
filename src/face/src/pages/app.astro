@@ -1,0 +1,93 @@
+---
+import Html from '@app/html.astro';
+---
+<Html title="HH Reports">
+<main x-data="{projects: '', dates: ['', ''], results: {}, show_results: false}">
+
+<h1>Reportes de HH</h1>
+
+
+<div class="card">
+   <span style="max-width: 531px;">
+      Escriba los proyectos, separados por <code>;</code>,
+      <code>espacio</code> o <code>enter</code>, para generar sus
+      reportes.
+   </span><br>
+
+   <textarea
+      placeholder="proyectos..."
+      :rows="projects.split('\\n').length < 2? 2: projects.split('\\n').length"
+      x-model="projects"
+      @keyup.ctrl.enter="lookup.click()"
+   ></textarea><br>
+
+   <span>HH informadas...</span><br>
+   <span>Desde:</span>
+   <input type="date" x-model="dates[0]"><br>
+   <span>Hasta:</span>
+   <input type="date" x-model="dates[1]"><br>
+
+   <div class="button" id="lookup" @click="
+      projects =
+         projects
+            .split('\\n').join(' ')
+            .split(' ').join(';')
+            .split(';').filter(item => item != '');
+      results = {};
+      projects.forEach(item => results[item] = 'buscando...');
+      projects = projects.join('; ');
+      show_results = true;
+      (() => {
+         let info = {projects: projects.split('; '), dates};
+         console.log(JSON.stringify(info));
+      })();
+   ">buscar reportes</div>
+</div><br>
+
+<div class="card tabla close" :class="{'close': !show_results}">
+   <div>
+      <button @click="show_results = false">cerrar</button><br><br>
+   </div>
+   <table>
+      <thead>
+         <tr>
+            <th>Proyecto</th><th>Estado</th>
+         </tr>
+      </thead>
+      <tbody>
+         <template x-for="state, project in results">
+         <tr><td x-text="project"></td><td x-html="state.italics()"></td></tr>
+         </template>
+      </tbody>
+   </table>
+</div>
+
+</main>
+</Html>
+
+
+<style>
+   .card {
+      @starting-style {
+         scale: 0;
+      }
+      transition: all 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+   .close {translate: -100vw 0}
+   .tabla {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+   table {
+      border-collapse: collapse;
+      text-align: center;
+   }
+   th, td {
+      padding: 3px 7px;
+      border: 1px solid var(--button-border-on);
+   }
+</style>

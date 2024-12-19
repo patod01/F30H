@@ -9,6 +9,8 @@
      padding: 11px 7px;
      align-items: center;
      font-family: serif;
+     text-align: center;
+     cursor: pointer;
 
      border-style: solid;
      border-color: var(--button-border);

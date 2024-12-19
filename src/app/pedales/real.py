@@ -19,3 +19,7 @@ def static(file):
 @route('/icon.png')
 def static():
      return static_file('icon.png', root='./pedales/ui')
+
+@route('/app')
+def main_app():
+     return static_file('app.html', root='./pedales/ui')
