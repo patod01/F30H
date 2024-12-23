@@ -2,10 +2,15 @@
 import Html from '@app/html.astro';
 ---
 <Html title="HH Reports">
-<main x-data="{projects: '', dates: ['', ''], results: {}, show_results: false}">
+<main x-data="{
+   projects: '',
+   dates: ['', ''],
+   results: {},
+   show_results: false,
+   downloaded: false
+}">
 
 <h1>Reportes de HH</h1>
-
 
 <div class="card">
    <span style="max-width: 531px;">
@@ -28,45 +33,93 @@ import Html from '@app/html.astro';
    <input type="date" x-model="dates[1]"><br>
 
    <div class="button" id="lookup" @click="
+      downloaded = false;
       projects =
          projects
             .split('\\n').join(' ')
             .split(' ').join(';')
-            .split(';').filter(item => item != '');
+            .split(';').filter(project => project != '')
+            .sort();
       results = {};
-      projects.forEach(item => results[item] = 'buscando...');
+      projects.forEach(project => results[project] = 'buscando...');
       projects = projects.join('; ');
       show_results = true;
-      (() => {
-         let info = {projects: projects.split('; '), dates};
-         console.log(JSON.stringify(info));
-      })();
+      const info = {projects: projects.split('; '), dates};
+      data = (await ejecutar('buscar_personas', info)).data;
+      for (let project in results) results[project] = 0;
+      for (let project of data) results[project[0]]+=project[3];
+      for (let project in results)
+         if (results[project] == 0)
+            results[project] = 'not found';
+      downloaded = true;
    ">buscar reportes</div>
 </div><br>
 
 <div class="card tabla close" :class="{'close': !show_results}">
    <div>
-      <button @click="show_results = false">cerrar</button><br><br>
+      <button @click="[show_results, downloaded] = [false, false]">cerrar</button><br><br>
    </div>
    <table>
       <thead>
          <tr>
-            <th>Proyecto</th><th>Estado</th>
+            <th>Proyecto</th><th x-text="!downloaded? 'Estado': 'HH Cargadas'"></th>
          </tr>
       </thead>
       <tbody>
          <template x-for="state, project in results">
-         <tr><td x-text="project"></td><td x-html="state.italics()"></td></tr>
+         <tr><td x-text="project"></td><td x-html="(state).toString().italics()"></td></tr>
          </template>
       </tbody>
    </table>
+</div><br>
+
+<div class="card" x-show="downloaded" x-transition>
+   <div class="button"
+      @click="
+         const datos = new Blob(
+            [JSON.stringify(data.map(row => row.toString()), null, 2)],
+            {type: 'application/json'}
+         );
+         const archivo = document.createElement('a');
+         archivo.href = window.URL.createObjectURL(datos);
+         archivo.download = `data.json`;
+         archivo.click();
+      "
+   >descargar</div>
+</div><br>
+
+<div class="card" x-data="{si: false}" x-show="downloaded" x-transition>
+   <button @click="
+      const dt = aq.table({
+         PY: data.map(d => d[0]),
+         date: data.map(d => d[1]),
+         user: data.map(d => d[2]),
+         HH: data.map(d => d[3])
+      });
+       pivoted = dt.groupby('PY', 'user').pivot('date', {total: d=> op.sum(d.HH)}).orderby('user');
+      si = true;
+   ">croos table</button>
+
+   <template x-if="si">
+   <div style="
+      position: fixed;
+      z-inddex: 3;
+      background: green;
+      letf: 0px;
+      top: 0px;
+   ">
+      <button @click="si = false">cerrar</button>
+      <div class="card" style="margin: 5px" x-html="pivoted.toHTML()"></div>
+   </div>
+   </template>
 </div>
 
 </main>
 </Html>
 
+<script src="https://cdn.jsdelivr.net/npm/arquero@latest"></script>
 
-<style>
+<style is:global>
    .card {
       @starting-style {
          scale: 0;

@@ -7,3 +7,14 @@ async function ejecuta(accion) {
      return await fetch(`${api}`, options)
           .then(response => response.json());
 }
+
+async function ejecutar(accion, info) {
+     const api = `${window.api_link}/${accion}`;
+     const options = {
+          method: `POST`,
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(info)
+     };
+     return await fetch(`${api}`, options)
+          .then(response => response.json());
+}

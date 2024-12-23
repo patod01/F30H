@@ -1,5 +1,6 @@
 from pedales.powers import open_it, load_it, kensten
 from bottle import request, response, route
+from .sql import get_HH
 
 def sh1t(modo):
      methods = ['OPTIONS', 'GET'] if modo == 'dev' else ['GET']
@@ -24,4 +25,17 @@ def sh1t(modo):
                          "formatted": formatted[1]
                     }
           return {"wholesome": 'pete'}
-     return ejecuta
+
+     methods = ['OPTIONS', 'POST'] if modo == 'dev' else ['POST']
+     @route('/buscar_personas', method=methods)
+     def buscar_personas():
+          if modo == 'dev':
+               response.headers['Access-Control-Allow-Origin'] = '*'
+               response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
+               if request.method == 'OPTIONS': return
+               print('dev CORS')
+
+          # print(request.json)
+          return {"data": get_HH(request.json)}
+          return {"wholesome": 'pete'}
+     return
