@@ -1,5 +1,6 @@
-*.xlsx
 *.pyc
+*.xlsx
+__*
 _*_
 .astro
 .jampack

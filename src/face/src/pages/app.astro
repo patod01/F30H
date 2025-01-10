@@ -52,7 +52,7 @@ import Html from '@app/html.astro';
          if (results[project] == 0)
             results[project] = 'not found';
       downloaded = true;
-   ">buscar reportes</div>
+   ">Buscar reportes</div>
 </div><br>
 
 <div class="card tabla close" :class="{'close': !show_results}">
@@ -85,7 +85,7 @@ import Html from '@app/html.astro';
          archivo.download = `data.json`;
          archivo.click();
       "
-   >descargar</div>
+   >Descargar</div>
 </div><br>
 
 <div class="card" x-data="{si: false}" x-show="downloaded" x-transition>
@@ -98,13 +98,12 @@ import Html from '@app/html.astro';
       });
        pivoted = dt.groupby('PY', 'user').pivot('date', {total: d=> op.sum(d.HH)}).orderby('user');
       si = true;
-   ">croos table</button>
+   ">cross table</button>
 
    <template x-if="si">
    <div style="
-      position: fixed;
+      position: absolute;
       z-inddex: 3;
-      background: green;
       letf: 0px;
       top: 0px;
    ">
