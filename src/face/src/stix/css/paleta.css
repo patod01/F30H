@@ -32,7 +32,7 @@
 */
 :root {
      --active: #e4610f;
-     --inactive: #f8d8c3;
+     --passive: #f8d8c3;
      --bg-tint: #e7e6e6;
      --black: #0c0808;
 
@@ -45,7 +45,7 @@
      --button-border-on: var(--button-bg);
 
      --button-bg: var(--active);
-     --button-bg-on: var(--inactive);
+     --button-bg-on: var(--passive);
      --button-txt: white;
      --button-corner: 5px;
 
