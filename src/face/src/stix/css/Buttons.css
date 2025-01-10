@@ -8,14 +8,14 @@
      margin: 1px;
      padding: 11px 7px;
      align-items: center;
-     font-family: serif;
+     font-weight: bold;
      text-align: center;
      cursor: pointer;
 
      border-style: solid;
      border-color: var(--button-border);
      border-width: 1px;
-     border-radius: 5px;
+     border-radius: var(--button-corner);
 
      background: var(--button-bg);
      color: var(--button-txt);
