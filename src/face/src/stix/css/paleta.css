@@ -37,9 +37,11 @@
      --black: #0c0808;
 
      --body-bg: white;
+/*     --body-bg: var(--bg-tint);*/
      --body-txt: var(--black);
-     --card-corner: 7px;
+     --card-corner: 5px;
      --card-background: vaR(--bg-tint);
+/*     --card-background: white;*/
      --card-txt: var(--body-txt);
      --button-border: var(--button-bg);
      --button-border-on: var(--button-bg);
