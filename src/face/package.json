@@ -1,7 +1,7 @@
 {
   "name": "F30H",
   "type": "module",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "scripts": {
     "dev": "DEV=true astro dev",
     "build": "DEV=false astro build",
