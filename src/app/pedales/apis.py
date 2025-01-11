@@ -2,7 +2,7 @@ from pedales.powers import open_it, load_it, kensten
 from bottle import request, response, route
 from .sql import get_HH
 
-def sh1t(modo):
+def sh1t(modo: str, db: str) -> None:
      methods = ['OPTIONS', 'GET'] if modo == 'dev' else ['GET']
      @route('/ejecuta/<accion>', method=methods)
      def ejecuta(accion):
@@ -36,6 +36,6 @@ def sh1t(modo):
                print('dev CORS')
 
           # print(request.json)
-          return {"data": get_HH(request.json)}
+          return {"data": get_HH(request.json, db)}
           return {"wholesome": 'pete'}
      return
