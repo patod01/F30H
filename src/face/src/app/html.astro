@@ -3,7 +3,6 @@ import '../stix/css/paleta.css';
 import '../stix/css/Body.css';
 import '../stix/css/Buttons.css';
 const {title} = Astro.props;
-const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';
 ---
 <html>
 <head>
@@ -12,7 +11,8 @@ const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';
    <meta name="viewport" content="width=device-width" />
    <title>{title}</title>
    <script is:inline src="/js/a.js"></script>
-   <script define:vars={{apiLink}}>
+   <script>
+      const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';
       window.api_link = apiLink;
    </script>
 </head>
