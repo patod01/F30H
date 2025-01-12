@@ -1,6 +1,6 @@
 from pedales.powers import open_it, load_it, kensten
 from bottle import request, response, route
-from .sql import get_HH
+from .queries.sql import get_HH
 
 def sh1t(modo: str, db: str) -> None:
      methods = ['OPTIONS', 'GET'] if modo == 'dev' else ['GET']
