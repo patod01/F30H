@@ -1,5 +1,7 @@
 import json, os, time
-# import pyodbc
+
+if os.name != 'posix':
+     import pyodbc
 
 def to_data(raw_row) -> list | None:
      [project, date, user, HH] = raw_row
