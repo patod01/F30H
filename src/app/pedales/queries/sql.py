@@ -4,16 +4,17 @@ from .sqlite import call_db as sqlite_call
 
 query_b1 = \
      """\
-     SELECT ccosto as PY, date, user, HH FROM hh_py
+     SELECT ccosto AS [PY], fecha AS [date], login AS [user], hh_proy AS [HH]
+     FROM hh_py
      WHERE
-          date >= ?
-          AND date <= ?
-     %s
+          fecha >= ?
+          AND fecha <= ?
+          %s
      ORDER BY PY, date;
      """
 
 def get_HH(req: dict, db: str) -> list[list] | None:
-     query_b2 = f"AND PY IN ({', '.join(['?']*len(req['projects']))})"
+     query_b2 = f"AND ccosto IN ({', '.join(['?']*len(req['projects']))})"
      full_query = query_b1 % query_b2
      if not req['dates'][0] and not req['dates'][1]:
           req['dates'][1] = time.strftime('%Y-%m-%d', time.localtime())

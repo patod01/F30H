@@ -1,7 +1,16 @@
-import time, json, os
+import json, os, time
 # import pyodbc
 
-def call_db(query: str, query_params: tuple) -> list[list] | None:
+def to_data(raw_row) -> list | None:
+     [project, date, user, HH] = raw_row
+     return [
+          project,
+          f'{date.year}-{date.month:02}-{date.day:02}',
+          user,
+          float(HH)
+     ]
+
+def call_db(query: str, query_params: tuple[str]) -> list[list] | None:
      if os.path.isfile('settings/cogs.json'):
           with open('settings/cogs.json') as _:
                keys = json.load(_)
@@ -13,8 +22,7 @@ def call_db(query: str, query_params: tuple) -> list[list] | None:
           f"PWD={keys['PWD']};"
           "Trusted_Connection=yes;"
      )
-     print(conn_key)
-     return
+     # print(conn_key)
      t1 = time.time()
 
      try:
@@ -22,28 +30,31 @@ def call_db(query: str, query_params: tuple) -> list[list] | None:
           cursor = conn.cursor()
           t2 = time.time()
 
-          SQL_QUERY = ''
-          cursor.execute(SQL_QUERY)
+          cursor.execute(query, query_params)
           t3 = time.time()
 
           records = cursor.fetchall()
           t4 = time.time()
 
-          # for r in records:
-          #      print(r)
-          # t5 = time.time()
-
-          cursor.close()
+          query_result = [to_data(r) for r in records]
+          # for r in query_result[0:5]:
+               # print(((r)))
+          t5 = time.time()
      except Exception as e:
           print(e)
      finally:
-          conn.close()
-          print('cn closed')
+          if 'cursor' in locals():
+               cursor.close()
+          if 'conn' in locals():
+               conn.close()
+          # print('cnn closed')
 
      print(f'connection time: {round(t2 - t1, 2)} s.')
      print(f'excecution time: {round(t3 - t2, 2)} s.')
      print(f'fetching time: {round(t4 - t3, 2)} s.')
-     # print(f'printting time: {round(t5 - t4, 2)} s.')
+     print(f'converting time: {round(t5 - t4, 2)} s.')
+
+     return query_result
 
 
 def temporal():
