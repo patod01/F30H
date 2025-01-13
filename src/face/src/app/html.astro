@@ -1,5 +1,4 @@
 ---
-import '../stix/css/paleta.css';
 import '../stix/css/Body.css';
 import '../stix/css/Buttons.css';
 const {title} = Astro.props;
@@ -10,6 +9,7 @@ const {title} = Astro.props;
    <link rel="icon" href="/icon.png" />
    <meta name="viewport" content="width=device-width" />
    <title>{title}</title>
+   <link rel="stylesheet" href="/css/paleta.css">
    <script is:inline src="/js/a.js"></script>
    <script>
       const apiLink = import.meta.env.DEV? 'http://localhost:8080': '';

@@ -1,0 +1,56 @@
+/*:root {
+     --body-bg: lightgray;
+     --body-txt: black;
+     --card-corner: 7px;
+     --card-background: white;
+     --card-txt: black;
+     --button-border: black;
+     --button-border-on: red;
+     --button-bg: green;
+     --button-bg-on: darkgreen;
+     --button-txt: white;
+     --resaltado-txt: white;
+     --resaltado-bg: darkgreen;
+}
+*/
+/*:root {
+     --body-bg: #dedede;
+     --body-txt: #172516;
+     --card-corner: 7px;
+     --card-background: #f0f4f0;
+     --card-txt: var(--body-txt);
+     --button-border: var(--body-txt);
+     --button-border-on: #f392c0;
+
+     --button-bg: #a7b79f;
+     --button-bg-on: #2e492c;
+     --button-txt: black;
+
+     --resaltado-txt: var(--body-txt);
+     --resaltado-bg: #c5d6c2;
+}
+*/
+:root {
+     --active: #e4610f;
+     --passive: #f8d8c3;
+     --bg-tint: #e7e6e6;
+     --black: #0c0808;
+
+     --body-bg: white;
+/*     --body-bg: var(--bg-tint);*/
+     --body-txt: var(--black);
+     --card-corner: 5px;
+     --card-background: vaR(--bg-tint);
+/*     --card-background: white;*/
+     --card-txt: var(--body-txt);
+     --button-border: var(--button-bg);
+     --button-border-on: var(--button-bg);
+
+     --button-bg: var(--active);
+     --button-bg-on: var(--passive);
+     --button-txt: white;
+     --button-corner: 5px;
+
+     --resaltado-txt: var(--body-txt);
+     --resaltado-bg: var(--button-bg-on);
+}

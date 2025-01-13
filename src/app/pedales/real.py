@@ -14,6 +14,10 @@ def landing():
 def static(file):
      return static_file(file, root=f'{ui_root}/_astro')
 
+@route('/css/<file:path>')
+def static(file):
+     return static_file(file, root=f'{ui_root}/css')
+
 @route('/js/<file:path>')
 def static(file):
      return static_file(file, root=f'{ui_root}/js')
