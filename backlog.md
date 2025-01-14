@@ -1,7 +1,7 @@
 # backlog:
 
-- compilador.
+- [ ] compilador.
 - loading div.
 - discarded projects detail.
 - [x] css.
-- [ ] grab from db.
+- [x] grab from db.

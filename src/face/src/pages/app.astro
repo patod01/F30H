@@ -14,8 +14,11 @@ import Html from '@app/html.astro';
 
 <div class="card">
    <span style="max-width: 531px;">
-      Escriba los proyectos, separados por <code>;</code>,
-      <code>espacio</code> o <code>enter</code>, para generar sus
+      Escriba los proyectos, separados por
+      <code>,</code>,
+      <code>;</code>,
+      <code>espacio</code> o
+      <code>enter</code>, para generar sus
       reportes.
    </span><br>
 
@@ -37,7 +40,8 @@ import Html from '@app/html.astro';
       projects =
          projects
             .split('\\n').join(' ')
-            .split(' ').join(';')
+            .split(' ').join(',')
+            .split(',').join(';')
             .split(';').filter(project => project != '')
             .sort();
       results = {};
