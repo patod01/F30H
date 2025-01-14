@@ -1,16 +1,19 @@
 {
   "name": "F30H",
   "type": "module",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "scripts": {
     "dev": "DEV=true astro dev",
-    "build": "DEV=false astro build",
+    "build": "DEV=false astro build && jampack ./dist",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/alpinejs": "^0.4.0",
-    "alpinejs": "^3.14.3",
-    "astro": "^4.16.13"
+    "@astrojs/alpinejs": "^0.4.1",
+    "alpinejs": "^3.14.8",
+    "astro": "^5.1.6"
+  },
+  "devDependencies": {
+    "@divriots/jampack": "^0.33.0"
   }
 }

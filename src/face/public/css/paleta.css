@@ -40,7 +40,7 @@
 /*     --body-bg: var(--bg-tint);*/
      --body-txt: var(--black);
      --card-corner: 5px;
-     --card-background: vaR(--bg-tint);
+     --card-background: var(--bg-tint);
 /*     --card-background: white;*/
      --card-txt: var(--body-txt);
      --button-border: var(--button-bg);
